@@ -4,13 +4,11 @@
     Requires the following features: `cargo run --example drop_files_d --features "textbox"`
 */
 
-
-extern crate native_windows_gui as nwg;
 extern crate native_windows_derive as nwd;
+extern crate native_windows_gui as nwg;
 
 use nwd::NwgUi;
 use nwg::NativeUi;
-
 
 #[derive(Default, NwgUi)]
 pub struct RichText {
@@ -26,18 +24,17 @@ pub struct RichText {
 
     #[nwg_control(font: Some(&data.font), focus: true, flags: "VSCROLL|AUTOVSCROLL|VISIBLE|TAB_STOP|SAVE_SELECTION")]
     #[nwg_layout_item(layout: grid, row: 0, col: 0)]
-    rich_text_box: nwg::RichTextBox
+    rich_text_box: nwg::RichTextBox,
 }
 
 impl RichText {
-
     fn init_text(&self) {
         let text = concat!(
             "Russian political jokes\r\n",  //0..24
 
             // 25..187
             "Russian political jokes are a part of Russian humour and can be grouped into the major time periods: Imperial Russia, Soviet Union and finally post-Soviet Russia.\r\n",
-            
+
             "Imperial Russia\r\n", // 187..203
 
             // 203..411
@@ -143,7 +140,6 @@ impl RichText {
         let data = data.on_min_max();
         data.set_min_size(200, 200);
     }
-
 }
 
 fn main() {
